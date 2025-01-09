@@ -1,12 +1,14 @@
 {% block content %}
 <div class="container">
     <h2>Assign Categories to Transactions</h2>
+    <!-- Form to assign categories to transactions -->
     <form method="post" 
       hx-post="{% url 'finalize_transactions' %}" 
       hx-target="#transaction-block" 
       hx-swap="innerHTML" 
       hx-push-url="true">
         {% csrf_token %}
+        <!-- Table to display transactions -->
         <table class="table">
             <thead>
                 <tr>
@@ -18,6 +20,7 @@
                 </tr>
             </thead>
             <tbody>
+                <!-- Loop through each transaction and display its details -->
                 {% for transaction in transactions %}
                 <tr>
                     <td>{{ transaction.date }}</td>
@@ -25,8 +28,11 @@
                     <td>{{ transaction.amount }}</td>
                     <td>{{ transaction.type }}</td>
                     <td>
+                        <!-- Hidden input to store transaction ID -->
                         <input type="hidden" name="transaction_ids[]" value="{{ transaction.id }}">
+                        <!-- Dropdown to select category for the transaction -->
                         <select name="categories[]" class="form-control" required>
+                            <!-- Loop through each category and create an option -->
                             {% for category in categories %}
                             <option value="{{ category.id }}">{{ category.name }}</option>
                             {% endfor %}
@@ -36,6 +42,7 @@
                 {% endfor %}
             </tbody>
         </table>
+        <!-- Submit button to finalize the transactions -->
         <button type="submit" class="btn btn-primary">Finalize</button>
     </form>
 </div>

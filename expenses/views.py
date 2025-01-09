@@ -223,52 +223,55 @@ def export(request):
 @login_required
 def import_transactions(request):
     if request.method == 'POST':
-        # Create resource and pass the user
         resource = TransactionResource(user=request.user)
         file = request.FILES.get('file')
         dataset = Dataset()
         dataset.load(file.read().decode(), format='csv')
-        
-        # Perform a dry run to check for errors
-        result = resource.import_data(dataset, dry_run=True)
 
-        # Count duplicate and successfully imported records
-        duplicate_count = getattr(resource, 'duplicate_count', 0)
-        imported_count = len(dataset) - duplicate_count
+        duplicate_count = 0
+        imported_count = 0
 
-        # Check if there are errors in the result
-        if not result.has_errors():
-            # Commit the import if there are no errors
-            resource.import_data(dataset, dry_run=False)
-            context = {
-                'message': f'{imported_count} transactions were uploaded successfully and 'f'{duplicate_count} duplicates were found and skipped.',
-                'duplicate_count': duplicate_count,
-            }
-        else:
-            # Log errors if present
-            errors = []
-            for row in result.invalid_rows:
-                for error in row.errors:
-                    errors.append(str(error))
-            context = {
-                'message': 'Some errors occurred during the import process.',
-                'errors': errors,
-                'duplicate_count': duplicate_count,
-            }
+        for row in dataset.dict:
+            # Check if the transaction already exists
+            existing_transaction = Transaction.objects.filter(
+                user=request.user,
+                date=row.get('date'),
+                description=row.get('description'),
+                amount=row.get('amount'),
+                type=row.get('type'),
+                category__name=row.get('category')
+            ).exists()
 
-        # Handle HTMX request for partial rendering
+            if existing_transaction:
+                duplicate_count += 1
+                continue  # Skip duplicates
+
+            # Create a new transaction
+            Transaction.objects.create(
+                user=request.user,
+                date=row.get('date'),
+                description=row.get('description'),
+                amount=row.get('amount'),
+                type=row.get('type'),
+                category=Category.objects.get(name=row.get('category'))
+            )
+            imported_count += 1
+
+        context = {
+            'message': f'{imported_count} transactions were uploaded successfully and {duplicate_count} duplicates were found and skipped.',
+            'duplicate_count': duplicate_count,
+        }
+
         if request.headers.get('HX-Request'):
             return render(request, 'expenses/partials/transaction_import_success.html', context)
 
-        # Redirect for non-HTMX requests
         return redirect('transactions')
 
-    # Handle GET request
-    context = {}
-    if request.headers.get('HX-Request'):  # HTMX request
-        return render(request, 'expenses/partials/import_transaction.html', context)
-    else:  # Non-HTMX request
-        return render(request, 'expenses/import_main.html', context)
+    if request.headers.get('HX-Request'):
+        return render(request, 'expenses/partials/import_transaction.html')
+    else:
+        return render(request, 'expenses/import_main.html')
+
 
 @login_required
 def choose_banking_service(request):

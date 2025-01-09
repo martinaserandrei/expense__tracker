@@ -31,10 +31,12 @@ class TransactionResource(resources.ModelResource):
             category__name=row.get('category'),
         ).first()
 
+    
     def before_import_row(self, row, **kwargs):
         """
         Check for duplicates before importing a row.
         """
+        row['user'] = self.user  # Set the user for the transaction
         if self.get_instance(None, row):
             self.duplicate_count += 1
             return False  # Skip importing this row
