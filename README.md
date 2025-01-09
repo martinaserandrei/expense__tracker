@@ -127,10 +127,10 @@ After completing these steps, you will be able to choose categories when uploadi
 
 
 ### 4. Usage
-- **Sign up**: Create a personal profile.
 - **Log in**: Access your dashboard.
 - **Manage transactions**: Add, update, and delete transactions.
 - **Visualize data**: Use the charts section to analyze your finances.
+- **Give a feedback**: Leave a feedback or report an issue.
 
 ---
 
