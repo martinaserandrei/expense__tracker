@@ -39,3 +39,6 @@ class TransactionResource(resources.ModelResource):
             self.duplicate_count += 1
             return False  # Skip importing this row
         return True
+    def dehydrate_category(self, transaction):
+        # Export the name of the category instead of its ID
+        return transaction.category.name if transaction.category else 'N/A'
