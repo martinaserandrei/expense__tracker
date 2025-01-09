@@ -1,40 +1,40 @@
 import django_filters
-from expenses.models import Transaction, Category
 from django import forms
+
+from expenses.models import Transaction,Category
 
 class TransactionFilter(django_filters.FilterSet):
     transaction_type = django_filters.ChoiceFilter(
         choices=Transaction.TRANSACTION_TYPE_CHOICES,
-        field_name='type',  # Refers to Transaction.type
-        lookup_expr='iexact',  # Case-insensitive exact match
+        field_name='type',
+        lookup_expr='iexact',
         label='Transaction Type',
-        empty_label='Any',  # Optional label
+        empty_label='Any',
     )
-    category = django_filters.ModelChoiceFilter(
-        queryset=Category.objects.all(),  # Refers to Category model instances
+    category = django_filters.ModelMultipleChoiceFilter(
+        queryset=Category.objects.all(),
         widget=forms.CheckboxSelectMultiple()
     )
     min_amount = django_filters.NumberFilter(
         field_name='amount',
-        lookup_expr='gte',  # Greater than or equal to
+        lookup_expr='gte',
         label='Minimum Amount',
     )
     max_amount = django_filters.NumberFilter(
         field_name='amount',
-        lookup_expr='lte',  # Less than or equal to
+        lookup_expr='lte',
         label='Maximum Amount',
     )
+
     start_date = django_filters.DateFilter(
         field_name='date',
         lookup_expr='gte',
         label='Start Date',
-        widget=forms.DateInput(attrs={'type': 'date'}),
     )
     end_date = django_filters.DateFilter(
         field_name='date',
         lookup_expr='lte',
         label='End Date',
-        widget=forms.DateInput(attrs={'type': 'date'}),
     )
 
     class Meta:

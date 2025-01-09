@@ -90,19 +90,20 @@ def new_transaction(request):
 @login_required
 def transactions_list(request):
     transaction_filter = TransactionFilter(request.GET, queryset=Transaction.objects.filter(user=request.user).order_by('-date'))
-    paginator=Paginator(transaction_filter.qs, settings.PAGE_SIZE)
+    transactions = transaction_filter.qs
+    paginator=Paginator(transactions,settings.PAGE_SIZE)
     transaction_page = paginator.page(1)
 
     # Use methods from TransactionQuerySet
-    total_income = transaction_filter.qs.get_total_income()
-    total_expenses = transaction_filter.qs.get_total_expenses()
+    total_income = transactions.get_total_income()
+    total_expenses = transactions.get_total_expenses()
 
     context = {
         'transactions': transaction_page,
         'filter': transaction_filter,
         'total_income': total_income,
         'total_expenses': total_expenses,
-        'net_income': total_income - total_expenses,
+        'net_income': total_income-total_expenses,
     }
     if request.htmx:  # HTMX request
         return render(request, 'expenses/partials/transaction_container.html', context)

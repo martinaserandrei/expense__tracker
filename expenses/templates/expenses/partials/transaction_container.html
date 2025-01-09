@@ -64,7 +64,7 @@
                         {% for transaction in transactions %}
 
                             {% if forloop.last and transactions.has_next %}
-                                <tr hx-get ="{% url 'get_transactions' %}?page={{ transactions.next_page_number }}" hx-trigger="revealed" hx-swap="afterend" hx-include="#filter-form">
+                            <tr hx-get ="{% url 'get_transactions' %}?page={{ transactions.next_page_number }}" hx-trigger="revealed" hx-swap="afterend" hx-include="#filter-form">
                             {% else %}
                                 <tr>
                             {% endif %}
@@ -120,11 +120,9 @@
     <div id="filter-form-container">
         <h3 class="mb-4 fw-bold">Filter Transactions</h3>
         <!-- Filter Form -->
-        <form method="get" class="filter-form" hx-get="{% url 'transactions' %}" hx-target="#transaction-table-container" hx-swap="outerHTML" hx-indicator="#loading-indicator" id="filter-form">
+        <form method="get" class="filter-form" hx-get="{% url 'transactions' %}" hx-target="#transaction-table-container" hx-swap="outerHTML"  id="filter-form">
             {{ filter.form.as_p }}
             <button type="submit" class="btn hover-line">Filter</button>
         </form>
-        
-    
-
+    </div>
 </div>
