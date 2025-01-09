@@ -1,0 +1,203 @@
+/* index.css */
+
+.latest-transactions-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.latest-transactions-section h3 {
+    margin-bottom: 15px;
+}
+
+
+.hover-line {
+    position: relative;
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff; /* Bootstrap Primary Blue */
+    border-radius: 5px;
+    transition: color 0.3s ease;
+}
+
+.hover-line::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.3s ease;
+}
+
+.hover-line:hover::after {
+    width: 100%;
+}
+
+.hover-line:hover {
+    color: #fff; /* Keeps the text color white on hover */
+}
+
+/*style for welcome*/
+.welcome-container {
+    background-color: #fff; /* White container for contrast */
+    border-radius: 15px;
+    padding: 3rem;
+    margin: auto;
+    max-width: 600px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-container h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #007bff; /* Bootstrap Primary Blue */
+}
+
+.welcome-container p {
+    font-size: 1.2rem;
+    color: #6c757d; /* Bootstrap Secondary Gray */
+}
+
+.button-group .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff; /* Bootstrap Primary Blue */
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.button-group .btn:hover {
+    background-color: #0056b3; /* Darker Blue */
+    text-decoration: none;
+}
+
+.button-group .btn.hover-line::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: width 0.3s ease;
+}
+
+.button-group .btn.hover-line:hover::after {
+    width: 100%;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+body {
+    background-color: #f8f9fa; /* Light gray for background */
+    color: #343a40; /* Dark gray for text */
+    font-family: 'Arial', sans-serif; 
+}
+
+
+.form-container {
+    text-align: left;
+}
+
+.form-container .btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff; /* Bootstrap Primary Blue */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.form-container .btn:hover {
+    background-color: #0056b3; /* Darker Blue */
+}
+
+/*filter*/
+.filter-form {
+    margin-bottom: 20px;
+}
+
+.filter-form button {
+    margin-top: 10px;
+}
+
+.table th, .table td {
+    padding: 10px;
+    text-align: left;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+
+.welcome-section {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+.form-control {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}

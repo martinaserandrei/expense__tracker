@@ -1,0 +1,42 @@
+{% block content %}
+<div class="container">
+    <h2>Assign Categories to Transactions</h2>
+    <form method="post" 
+      hx-post="{% url 'finalize_transactions' %}" 
+      hx-target="#transaction-block" 
+      hx-swap="innerHTML" 
+      hx-push-url="true">
+        {% csrf_token %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Type</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction.date }}</td>
+                    <td>{{ transaction.description }}</td>
+                    <td>{{ transaction.amount }}</td>
+                    <td>{{ transaction.type }}</td>
+                    <td>
+                        <input type="hidden" name="transaction_ids[]" value="{{ transaction.id }}">
+                        <select name="categories[]" class="form-control" required>
+                            {% for category in categories %}
+                            <option value="{{ category.id }}">{{ category.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary">Finalize</button>
+    </form>
+</div>
+{% endblock %}

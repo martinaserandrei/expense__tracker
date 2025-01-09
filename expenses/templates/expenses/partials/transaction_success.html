@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Transaction Updated{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static '/expenses/css/index2.css' %}">
+
+<body id="success">
+    <div class="success-container">
+        <h1 class="text-success">Transaction Updated Successfully!</h1>
+        <p class="text-muted">You can either modify this transaction again or view all transactions.</p>
+
+        <div class="btn-container">
+            <!-- Modify Again Button -->
+            <a href="{% url 'update_transaction' transaction.pk %}" class="btn btn-primary">Modify Again</a>
+
+            <!-- View All Transactions Button -->
+            <a href="{% url 'transactions' %}" class="btn btn-secondary">View All Transactions</a>
+        </div>
+    </div>
+</body>
+{% endblock %}
+

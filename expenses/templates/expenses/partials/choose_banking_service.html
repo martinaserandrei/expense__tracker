@@ -1,0 +1,18 @@
+{% block content %}
+<div class="container">
+    <h2>Select Your Banking Service</h2>
+    <form method="post" 
+      hx-post="{% url 'choose_banking_service' %}" 
+      hx-target="#transaction-block" 
+      hx-swap="innerHTML" 
+      hx-push-url="true" 
+      enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="banking_service">Banking Service:</label>
+        <select id="banking_service" name="banking_service" class="form-control" required>
+            <option value="intesa">Intesa Sanpaolo</option>
+        </select>
+        <button type="submit" class="btn btn-primary mt-3">Continue</button>
+    </form>
+</div>
+{% endblock %}

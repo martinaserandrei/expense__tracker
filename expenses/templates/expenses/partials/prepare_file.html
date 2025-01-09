@@ -1,0 +1,17 @@
+{% block content %}
+<div class="container">
+    <h2>Upload and Prepare File</h2>
+    <form method="post" enctype="multipart/form-data" 
+      hx-post="{% url 'prepare_file_page' %}" 
+      hx-target="#transaction-block" 
+      hx-swap="innerHTML" 
+      hx-push-url="true">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="transaction_file">Upload File:</label>
+            <input type="file" id="transaction_file" name="transaction_file" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Prepare File</button>
+    </form>
+</div>
+{% endblock %}

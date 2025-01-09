@@ -1,0 +1,74 @@
+{% load form_extras %}
+{% load static %}
+<div class="card shadow-sm p-4 rounded-4" id="transaction-block">
+    <form method="post" hx-post="{% url 'new_transaction' %}" hx-target="#transaction-block">
+        {% csrf_token %}
+        <!-- Non-field errors -->
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+        
+        <!-- Date field -->
+        <div class="mb-3">
+            {{ form.date.label_tag }}
+            {{ form.date|add_class:"form-control" }}
+            {% if form.date.errors %}
+                <div class="text-danger small">
+                    {{ form.date.errors|join:", " }}
+                </div>
+            {% endif %}
+        </div>
+    
+        <!-- Category field -->
+        <div class="mb-3">
+            {{ form.category.label_tag }}
+            {{ form.category|add_class:"form-control" }}
+            {% if form.category.errors %}
+                <div class="text-danger small">
+                    {{ form.category.errors|join:", " }}
+                </div>
+            {% endif %}
+        </div>
+    
+        <!-- Type field -->
+        <div class="mb-3">
+            {{ form.type.label_tag }}
+            {{ form.type|add_class:"form-control" }}
+            {% if form.type.errors %}
+                <div class="text-danger small">
+                    {{ form.type.errors|join:", " }}
+                </div>
+            {% endif %}
+        </div>
+    
+        <!-- Amount field -->
+        <div class="mb-3">
+            {{ form.amount.label_tag }}
+            {{ form.amount|add_class:"form-control" }}
+            {% if form.amount.errors %}
+                <div class="text-danger small">
+                    {{ form.amount.errors|join:", " }}
+                </div>
+            {% endif %}
+        </div>
+    
+        <!-- Description field -->
+        <div class="mb-3">
+            {{ form.description.label_tag }}
+            {{ form.description|add_class:"form-control" }}
+            {% if form.description.errors %}
+                <div class="text-danger small">
+                    {{ form.description.errors|join:", " }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="d-flex justify-content-between mt-3">
+            <a href="{% url 'transactions' %}" class="btn btn-secondary">Back to Transactions</a>
+            <button type="submit" class="btn btn-primary">Save Transaction</button>
+        </div>
+    </form>
+
+</div>
+

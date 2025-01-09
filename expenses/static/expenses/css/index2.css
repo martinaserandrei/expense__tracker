@@ -1,0 +1,181 @@
+/* signup page */
+.signup-container {
+    max-width: 400px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+#body_signup {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+}
+
+
+/* charts_container */
+.grid-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr; /* Adjust this to control the ratio of filter form and chart */
+    gap: 1rem;
+    /*vmargin-top: 2rem;  Give some space at the top */
+}
+
+#filter-form-container {
+    background-color: #fff; /* White background for the filter form */
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#transaction-table-container {
+    background-color: #fff; /* White background for the chart container */
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.filter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Adds space between form elements */
+}
+
+.filter-form input,
+.filter-form select,
+.filter-form button {
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    transition: border-color 0.3s ease;
+}
+
+.filter-form input:focus,
+.filter-form select:focus {
+    border-color: #007bff; /* Blue border when input is focused */
+    outline: none;
+}
+
+/* Styling for the button */
+.filter-form button {
+    background-color: #007bff; /* Blue background */
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filter-form button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+
+/* delete success */
+#delete_success {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+.success-container {
+    max-width: 500px;
+    margin: 50px auto;
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.btn-container {
+    margin-top: 20px;
+}
+.btn {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+
+
+/** transaction_container **/
+
+/* Styling for the table header */
+.table th {
+    background-color: #007bff; /* Blue header */
+    color: white;
+    padding: 12px;
+    text-align: left;
+    white-space: nowrap; /* Prevent word wrapping */
+}
+
+/* Apply the rounded corners only to the first row of table headers */
+.table thead tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.table thead tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+}
+
+/* Styling for the table body */
+.table td {
+    padding: 12px;
+    background-color: #f9f9f9; /* Slightly different background color */
+    border-bottom: 1px solid #ddd; /* Add a light border at the bottom */
+}
+
+/* Styling for even rows */
+.table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Light gray background for even rows */
+}
+
+/* Hover effect for table rows */
+.table tr:hover {
+    background-color: #e9f1fb; /* Light blue hover effect */
+}
+
+/* Ensure that the entire table has consistent borders */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Styling for empty rows or no data */
+.table td[colspan="5"] {
+    text-align: center;
+    color: #6c757d;
+    font-style: italic;
+    padding: 20px;
+}
+
+
+.icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Set a width */
+    height: 40px; /* Set a height */
+    padding: 8px; /* Add some padding */
+    border: 1px solid #ddd; /* Optional: border for visibility */
+    border-radius: 50%; /* Make it circular */
+    background-color: #f9f9f9; /* Light background color */
+    cursor: pointer; /* Show pointer on hover */
+    transition: background-color 0.3s ease;
+}
+
+.icon-btn:hover {
+    background-color: #e0e0e0; /* Change background color on hover */
+}
+
+.icon-btn svg {
+    width: 24px; /* Adjust icon size */
+    height: 24px;
+    color: #007bff; /* Blue color for icons */
+} 
+
+#successs {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
