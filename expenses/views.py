@@ -206,7 +206,7 @@ def transaction_charts(request):
         'plot_line_chart': plot_line_chart.to_html(),
     }
     if request.htmx:
-        return render(request, 'expenses/partials/charts_container.html', context)
+        return render(request, 'expenses/partials/charts_filtered.html', context)
     return render(request, 'expenses/charts.html', context)
 
 @login_required

@@ -31,7 +31,7 @@
         <!-- Filter Form -->
         <form method="get" class="filter-form" hx-get="{% url 'charts' %}" 
         hx-target="#transaction-charts-container" 
-        hx-swap="innerHTML" 
+        hx-swap="outerHTML" 
         hx-indicator="#loading-indicator">
             {{ filter.form.as_p }}
             <button type="submit" class="btn hover-line">Filter</button>
