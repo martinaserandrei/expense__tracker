@@ -14,7 +14,7 @@ class TransactionForm(forms.ModelForm):
         model = Transaction
         fields = ['date', 'category', 'type', 'amount', 'description']
         widgets = {
-            'date': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'AAAA-MM-DD'}),
+            'date': forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'YYYY-MM-DD'}),
         }
 class CustomUserCreationForm(UserCreationForm):
     class Meta:

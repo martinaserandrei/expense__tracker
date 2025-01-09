@@ -30,11 +30,13 @@ class TransactionFilter(django_filters.FilterSet):
         field_name='date',
         lookup_expr='gte',
         label='Start Date',
+        widget=forms.DateInput(attrs={'placeholder': 'YYYY-MM-DD', 'type': 'date'})
     )
     end_date = django_filters.DateFilter(
         field_name='date',
         lookup_expr='lte',
         label='End Date',
+        widget=forms.DateInput(attrs={'placeholder': 'YYYY-MM-DD', 'type': 'date'})
     )
 
     class Meta:
