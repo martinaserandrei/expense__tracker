@@ -376,29 +376,31 @@ def finalize_transactions(request):
         # Update the session to indicate the success step
         request.session['finalize_transactions_step'] = 'success'
 
-    # Render the correct template based on the step
-    if step == 'success':
-        if request.htmx:
-            return render(request, 'expenses/partials/transaction_import_success.html', {
-                'message': 'Transactions successfully saved and imported!'
-            })
-        else:
-            return render(request, 'expenses/full_page_template.html', {
-                'content': 'expenses/partials/transaction_import_success.html',
-                'message': 'Transactions successfully saved and imported!',
-            })
+
+
+        # Render the correct template based on the step
+        if step == 'success':
+            if request.htmx:
+                return render(request, 'expenses/partials/transaction_import_success.html', {
+                    'message': 'Transactions successfully saved and imported!'
+                })
+            else:
+                return render(request, 'expenses/full_page_template.html', {
+                    'content': 'expenses/partials/transaction_import_success.html',
+                    'message': 'Transactions successfully saved and imported!',
+                })
+
+    if request.htmx:
+        return render(request, 'expenses/partials/assign_categories.html', {
+            'transactions': cleaned_data.to_dict('records'),
+            'categories': categories,
+        })
     else:
-        if request.htmx:
-            return render(request, 'expenses/partials/assign_categories.html', {
-                'transactions': cleaned_data.to_dict('records'),
-                'categories': categories,
-            })
-        else:
-            return render(request, 'expenses/full_page_template.html', {
-                'content': 'expenses/partials/assign_categories.html',
-                'transactions': cleaned_data.to_dict('records'),
-                'categories': categories,
-            })
+        return render(request, 'expenses/full_page_template.html', {
+            'content': 'expenses/partials/assign_categories.html',
+            'transactions': cleaned_data.to_dict('records'),
+            'categories': categories,
+        })
 
 
 @login_required
