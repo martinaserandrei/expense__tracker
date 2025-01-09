@@ -12,15 +12,13 @@ Throughout the development process, several challenges were encountered:
 - **User Feedback Handling:** Providing meaningful error messages during form validation, particularly for date fields, involved refining both backend validation and frontend error display logic.
 - **Chart Customization:** Achieving user-friendly and visually appealing charts required significant customization of the Plotly library, such as displaying months by name (e.g., Jan, Feb) rather than numerical representations.
 - **Teammate Collaboration:** Collaborating on the same project was not straightforward, especially when doing modification on the same files. However, we alternated two different modalities of collaboration: synchronous and asynchronous, exploiting two interesting feature on VSCode: respectively Live Share Session extension and collaboration via GitHub.
-
 To overcome these hurdles, we adopted iterative testing and debugging approaches. For instance, issues with HTMX and partial templates were resolved by consolidating sidebar and content logic into reusable components. Similarly, CSS styles were centralized into two `index.css and index2.css` files to ensure consistency and maintainability.
 
 Future enhancements could include:
-- **Bank Integration:** Semplification of data import by integrating APIs for popular banking services or extending the recognized format (such as pdf files).
+- **Bank Integration:** Semplification of data import by integrating APIs for popular banking services, extending the recognized formats of input files (such as pdf files) and extending also the number of compatible banking services.
 - **Mobile Responsiveness:** Optimizing the user interface for smaller devices to reach a broader audience.
 - **Advanced Analytics:** Adding predictive analytics to provide users with insights into their spending patterns.
 - **Online Hosting:** Make the web application available on a hosting platform or with a personalized domain.
-- **Profile Settings:** Implementation of profile section with user data to enhance profile management.
+- **Profile Settings:** Implementation of profile section with user data to enhance profile management (such as the possibility of change password or delete the profile).
 
-Despite some limitations, such as the lack of flexibility in recognizing transactions when importing a file, the application successfully provides a working platform for users to track and manage their finances effectively. The lessons learned during development, particularly regarding dynamic content updates and user-centric design, will serve as valuable insights for future projects.
 
