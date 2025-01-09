@@ -14,8 +14,8 @@ The Personal Expense Tracker is a web application designed to help individuals m
 Keeping track of your expenses and income, whether through credit cards or cash, can be challenging. The Personal Expense Tracker simplifies this process by giving you:
 
 - **A personal profile**: Securely manage and access your financial data.
-- **Detailed transaction tracking**: Record your income and expenses with relevant categories and descriptions.
-- **Insightful visualization**: Gain insights into your spending habits through charts.
+- **Transaction tracking**: Record your income and expenses with relevant categories and descriptions.
+- **Transaction visualization**: Gain insights into your spending habits through charts.
 - **Improved financial overview**: Get a complete picture of your finances in one place.
 
 ---
@@ -41,7 +41,7 @@ Dynamic charts for analyzing:
 Import and export transactions in csv format, registered for external use or record-keeping.
 
 ### 5. Responsive Design
-Fully responsive interface for seamless use on desktop, tablet, and mobile devices.
+Responsive interface for use on desktop.
 
 ---
 
@@ -57,22 +57,21 @@ This is the core app that handles all functionalities related to expense trackin
 - **`forms.py`**: Handles form creation and validation for transaction input.
 - **`urls.py`**: Routes URLs to the corresponding views.
 - **`resources.py`**: Handles export logic for CSV files.
-- **`templates/`**: Contains the HTML templates used for rendering pages.
+- **`templates/`**: Contains the HTML templates used for rendering pages. It is divived in main template and partials.
   - `base.html`: The base template used across the app.
   - `transactions.html`: Page for listing and managing transactions.
   - `charts.html`: Page for visualizing financial data.
-  - `import_transactions.html`: Page for importing transactions.
+  - `home.html`: Homepage of the website with an overview.
+  - `signup.html`: Page for signign up.
+  - `welcome.html`: Page to log in.
+  - `feedback.html`: Page to give a feedback about the platform and with contact section.
+  -  **`partials/`**: Contains all the partial HTML templates relative to main ones, plus the ones related to the functionalities of the platform such as import,export...
 
 ### 2. **Static Files**
 - **CSS**: Custom styles and scripts to enhance the UI/UX.
-- **Images**: Used for branding and visualization.
+- **Images**: Used for storing the logo.
 
-### 3. **API Endpoints**
-- **`/transactions/`**: Manage transactions.
-- **`/charts/`**: Fetch and display charts.
-- **`/import/`**: Import transactions via CSV.
-
-### 4. **Middleware and Security**
+### 3. **Middleware and Security**
 - CSRF protection for form submissions.
 - Authentication middleware to restrict access to personal data.
 
@@ -142,9 +141,5 @@ After completing these steps, you will be able to choose categories when uploadi
 - **Database**: SQLite
 - **Visualization**: Plotly.js
 
----
-
-## License
-This project is open-source and available under the MIT License.
 
 
