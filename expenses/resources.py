@@ -12,8 +12,8 @@ class TransactionResource(resources.ModelResource):
         report_skipped = False
         import_id_fields = ('date', 'amount', 'type', 'description', 'category')  # Use these fields to identify duplicates
 
-    def _init_(self, user=None, *args, **kwargs):
-        super()._init_(*args, **kwargs)
+    def __init__(self, user=None, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.user = user  # Store the user to associate with transactions
         self.duplicate_count = 0
 
