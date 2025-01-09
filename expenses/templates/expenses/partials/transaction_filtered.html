@@ -3,35 +3,8 @@
 {% load humanize %}
 {% load partials %}
 <link rel="stylesheet" href="{% static '/expenses/css/index2.css' %}">
-
-<div class="grid-container" id="transaction-list">
-    <!-- 3/4 cols for the transaction table -->
-    {% if transactions %}
-    <div>
-        <div class =" mb-5 bg-white p-4 rounded-4 shadow-sm">
-            <h2 class="mb-4 prose prose 2xl fw-bold">
-                Totals
-            </h2>
-            <table class="table">
-                <thead class="text-xs text-white uppercase">
-                    <tr>
-                        <th>Total Income €</th>
-                        <th>Total Expenses €</th>
-                        <th>Net Income €</th>
-                    </tr>
-                </thead>  
-                <tbody>
-                    <tr>
-                        <td>{{total_income|floatformat:2|intcomma}}</td>
-                        <td>{{total_expenses|floatformat:2|intcomma}}</td>
-                        <td>{{net_income|floatformat:2|intcomma}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        
-
-        <div id="transaction-table-container" class="mb-5 bg-white p-4 rounded-4 shadow-sm">
+<div>
+        <div id="transaction-table-container">
             <!-- Transactions Table -->
             <h2 class="mb-4 fw-bold prose prose 2xl">
                 Transactions
@@ -96,33 +69,4 @@
                 </tbody>
             </table>
         </div>
-    </div>
-    {% else %}
-
-    <p class="text-2xl text-black">
-        No transactions found
-        <div class="d-flex gap-2 mt-4">
-            <a class="icon-btn" href="{% url 'export' %}" hx-include="#filter-form">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                </svg>
-            </a>
-            <a class="icon-btn" hx-get="{% url 'import_choice' %}" hx-target="#transaction-block" hx-push-url="true">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
-                </svg>
-            </a>        
-        </div>
-    </p>
-    {% endif %}
-
-    <!-- 1/4 cols for the filter form -->
-    <div id="filter-form-container">
-        <h3 class="mb-4 fw-bold">Filter Transactions</h3>
-        <!-- Filter Form -->
-        <form method="get" class="filter-form" hx-get="{% url 'transactions' %}" hx-target="#transaction-table-container" hx-swap="outerHTML"  id="filter-form">
-            {{ filter.form.as_p }}
-            <button type="submit" class="btn hover-line">Filter</button>
-        </form>
-    </div>
 </div>

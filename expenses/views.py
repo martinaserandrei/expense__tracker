@@ -106,7 +106,7 @@ def transactions_list(request):
         'net_income': total_income-total_expenses,
     }
     if request.htmx:  # HTMX request
-        return render(request, 'expenses/partials/transaction_container.html', context)
+        return render(request, 'expenses/partials/transaction_filtered.html', context)
     return render(request, 'expenses/transaction_list.html', context)
 
 @login_required
