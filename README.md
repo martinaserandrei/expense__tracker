@@ -108,7 +108,7 @@ This is the core app that handles all functionalities related to expense trackin
    ```bash
    python manage.py runserver
    ```
-3. Open the application in your browser at `http://127.0.0.1:8000/`.
+3. Open the application in your browser at `http://127.0.0.1:8000/` (browser compatible: Google Chrome).
 4. Create a user by navigating to the signup page in the application.
 5. Log in with the newly created user account to access the application.
 
