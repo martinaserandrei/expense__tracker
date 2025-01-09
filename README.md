@@ -110,8 +110,24 @@ This is the core app that handles all functionalities related to expense trackin
    python manage.py runserver
    ```
 3. Open the application in your browser at `http://127.0.0.1:8000/`.
+4. Create a user by navigating to the signup page in the application.
+5. Log in with the newly created user account to access the application.
 
-### 3. Usage
+### 3. Generate Categories
+1. Stop the development server by pressing `Ctrl+C` in the terminal.
+2. Run the following command to generate default categories:
+   ```bash
+   python manage.py generate_categories
+   ```
+3. Restart the development server:
+   ```bash
+   python manage.py runserver
+   ```
+
+After completing these steps, you will be able to choose categories when uploading a file.
+
+
+### 4. Usage
 - **Sign up**: Create a personal profile.
 - **Log in**: Access your dashboard.
 - **Manage transactions**: Add, update, and delete transactions.
