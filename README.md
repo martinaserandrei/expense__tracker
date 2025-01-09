@@ -94,8 +94,9 @@ This is the core app that handles all functionalities related to expense trackin
    python3 -m venv venv
    source venv/bin/activate
    ```
-4. Install dependencies:
+4. Enter in expense_tracker and install dependencies:
    ```bash
+   cd expense_tracker
    pip install -r requirements.txt
    ```
 
