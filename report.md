@@ -1,3 +1,5 @@
+# Short report
+
 Our project is a personal expense tracker designed as a web application implemented in Python using the Django framework. The purpose of this application is to help users efficiently manage their finances by tracking expenses and income, visualizing financial trends through charts, and organizing transactions by category. It is intended for individual users who wish to consolidate their financial data from multiple sources, such as credit cards and cash transactions, into a single, user-friendly platform.
 
 The project consists of three primary components:
