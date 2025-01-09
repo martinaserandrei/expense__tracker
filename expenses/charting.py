@@ -2,6 +2,8 @@ import plotly.express as px
 from django.db.models import Sum, Q
 from expenses.models import Category
 import plotly.graph_objects as go
+import calendar
+
 
 
 def plot_expenses(qs):
@@ -49,9 +51,11 @@ def plot_line_chart(qs):
     # Group the data by month (or day, week, etc.)
     data = qs.values('date__month').annotate(
         total_income=Sum('amount', filter=Q(type='income')),
-        total_expense=Sum('amount', filter=Q(type='expense'))).order_by('date__month')
+        total_expense=Sum('amount', filter=Q(type='expense'))
+    ).order_by('date__month')
 
-    months = [f'Month {entry["date__month"]}' for entry in data]
+    # Use calendar module to map month numbers to names
+    months = [calendar.month_abbr[entry["date__month"]] for entry in data]
     income = [entry['total_income'] or 0 for entry in data]
     expenses = [entry['total_expense'] or 0 for entry in data]
 
