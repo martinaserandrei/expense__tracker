@@ -123,7 +123,7 @@ This is the core app that handles all functionalities related to expense trackin
    python manage.py runserver
    ```
 
-After completing these steps, you will be able to choose categories when uploading a file.
+After completing these steps, you will be able to choose categories when uploading a file from your banking service!.
 
 
 ### 4. Usage
@@ -131,6 +131,10 @@ After completing these steps, you will be able to choose categories when uploadi
 - **Manage transactions**: Add, update, and delete transactions.
 - **Visualize data**: Use the charts section to analyze your finances.
 - **Give a feedback**: Leave a feedback or report an issue.
+- **Export data**: Export your transaction in a .csv file.
+- **Import files**: Import files in two ways: either by using a recognized format (.csv) or by selecting the 'Banking Service' option to access files from your banking service, if it is among the supported ones.
+
+*Remark*: If you want to try the 'Upload a file' option in the parent folder there is a file called 'new_transactions.csv' that you can upload and it should work!
 
 ---
 
